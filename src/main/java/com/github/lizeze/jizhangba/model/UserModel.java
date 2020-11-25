@@ -6,6 +6,8 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Date;
+
 /**
  * @BelongsProject: jizhangba
  * @BelongsPackage: com.github.lizeze.jizhangba.model
@@ -22,8 +24,8 @@ public class UserModel {
     @TableId
     @TableField("user_id")
     private String userId;
-    @TableField("openid")
-    private String openid;
+    @TableField("unionid")
+    private String unionId;
     @TableField("nick_name")
     private String nickName;
     @TableField("gender")
@@ -34,6 +36,8 @@ public class UserModel {
     private String country;
     @TableField("city")
     private String city;
+    @TableField("create_time")
+    private Date createTime;
 
 
 }

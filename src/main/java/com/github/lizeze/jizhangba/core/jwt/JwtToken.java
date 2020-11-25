@@ -50,7 +50,16 @@ public class JwtToken {
         }
         return true;
     }
-
+    public static Boolean verifyToken(String token) {
+        try {
+            Algorithm algorithm = Algorithm.HMAC256("xiaotaideng");
+            JWTVerifier verifier = JWT.require(algorithm).build();
+            verifier.verify(token);
+        } catch (JWTVerificationException e) {
+            return false;
+        }
+        return true;
+    }
     private static String getToken(String sessionId, String jwtKey, Integer expiredTimeIn) {
         Algorithm algorithm = Algorithm.HMAC256(jwtKey);
         return JWT.create().withClaim("sessionId", sessionId).withExpiresAt(DateUtil.addSeconds(expiredTimeIn)).withIssuedAt(DateUtil.getNow()).sign(algorithm);
